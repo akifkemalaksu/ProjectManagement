@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjectManagement.Repository.Migrations
 {
-    public partial class CreateWebApiCourseDb : Migration
+    public partial class CreateDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,8 +28,7 @@ namespace ProjectManagement.Repository.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: true),
@@ -46,6 +45,16 @@ namespace ProjectManagement.Repository.Migrations
                         principalColumn: "ProjectId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Projects",
+                columns: new[] { "ProjectId", "Description", "Field", "ImageUrl", "Name" },
+                values: new object[] { new Guid("105ebb0f-bc6d-44ae-be34-9064cb6a9629"), "Web Application Programming Interface", "Computer Science", null, "ASP.NET Core Web API Project" });
+
+            migrationBuilder.InsertData(
+                table: "Employees",
+                columns: new[] { "EmployeeId", "Age", "FirstName", "LastName", "Position", "ProjectId" },
+                values: new object[] { new Guid("82b3ea85-adfd-4641-8bf2-b5c3d5479c0a"), 31, "Mahmut", "Tuncer", "Senior Developer", new Guid("105ebb0f-bc6d-44ae-be34-9064cb6a9629") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_ProjectId",

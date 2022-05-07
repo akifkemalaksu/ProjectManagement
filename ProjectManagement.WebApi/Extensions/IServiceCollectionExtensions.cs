@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjectManagement.Contracts.Repository.UoW;
 using ProjectManagement.Contracts.Utilities.Logger;
 using ProjectManagement.Logger.NLog;
 using ProjectManagement.Repository;
+using ProjectManagement.Repository.UoW;
 
 namespace ProjectManagement.WebApi.Extensions
 {
@@ -34,5 +36,8 @@ namespace ProjectManagement.WebApi.Extensions
                 )
             );
         }
+
+        public static void ConfigureRepositoryManager(this IServiceCollection services) =>
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
     }
 }

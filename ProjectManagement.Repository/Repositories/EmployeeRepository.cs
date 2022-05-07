@@ -21,7 +21,7 @@ namespace ProjectManagement.Repository.Repositories
             Delete(employee);
         }
 
-        public Employee GetEmployeeByProjectId(Guid projectId, int employeeId, bool trackChanges) =>
+        public Employee GetEmployeeByProjectId(Guid projectId, Guid employeeId, bool trackChanges) =>
             FindByCondition(e => e.ProjectId.Equals(projectId) && e.Id.Equals(employeeId), trackChanges).SingleOrDefault();
 
         public IEnumerable<Employee> GetEmployeesByProjectId(Guid projectId, bool trackChanges) =>

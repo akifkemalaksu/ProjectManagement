@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectManagement.Contracts.Repository.UoW;
 using ProjectManagement.Contracts.Utilities.Logger;
-using ProjectManagement.Entities.Models;
 
 namespace ProjectManagement.WebApi.Controllers
 {
@@ -8,19 +8,13 @@ namespace ProjectManagement.WebApi.Controllers
     [ApiController]
     public class ProjectsController : ControllerBase
     {
-        private readonly List<Project> _projectList;
         private readonly ILoggerService _loggerService;
+        private readonly IRepositoryManager _repositoryManager;
 
-        public ProjectsController(ILoggerService loggerService)
+        public ProjectsController(ILoggerService loggerService, IRepositoryManager repositoryManager)
         {
             _loggerService = loggerService;
-
-            _projectList = new List<Project>()
-            {
-                new Project(){ Id = Guid.NewGuid(),Name="Akif"},
-                new Project(){ Id = Guid.NewGuid(),Name="Kemal"},
-                new Project(){ Id = Guid.NewGuid(),Name="Aksu"}
-            };
+            _repositoryManager = repositoryManager;
         }
 
         [HttpGet]
@@ -28,11 +22,8 @@ namespace ProjectManagement.WebApi.Controllers
         {
             try
             {
-                int a = 0;
-                int b = 5;
-                int c = b / a;
-                _loggerService.LogInfo("Projects.Get() has been run.");
-                return Ok(_projectList);
+                var list = _repositoryManager.Project.GetAllProjects(false);
+                return Ok(list);
             }
             catch (Exception ex)
             {

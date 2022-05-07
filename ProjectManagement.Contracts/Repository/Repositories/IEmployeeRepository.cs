@@ -6,7 +6,7 @@ namespace ProjectManagement.Contracts.Repository.Repositories
     {
         IEnumerable<Employee> GetEmployeesByProjectId(Guid projectId, bool trackChanges);
 
-        Employee GetEmployeeByProjectId(Guid projectId, int employeeId, bool trackChanges);
+        Employee GetEmployeeByProjectId(Guid projectId, Guid employeeId, bool trackChanges);
 
         void CreateEmployeeForProject(Guid projectId, Employee employee);
 
