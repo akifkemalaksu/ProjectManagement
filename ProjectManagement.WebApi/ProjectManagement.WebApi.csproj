@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId> </UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,8 @@
     <ProjectReference Include="..\ProjectManagement.Entities\ProjectManagement.Entities.csproj" />
     <ProjectReference Include="..\ProjectManagement.Logger\ProjectManagement.Logger.csproj" />
     <ProjectReference Include="..\ProjectManagement.Repository\ProjectManagement.Repository.csproj" />
+    <ProjectReference Include="..\ProjectManagement.Service.Contracts\ProjectManagement.Service.Contracts.csproj" />
+    <ProjectReference Include="..\ProjectManagement.Service\ProjectManagement.Service.csproj" />
   </ItemGroup>
 
 </Project>

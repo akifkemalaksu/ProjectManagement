@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProjectManagement.Contracts.Repository.UoW;
-using ProjectManagement.Contracts.Utilities.Logger;
+using ProjectManagement.Service.Contracts;
 
 namespace ProjectManagement.WebApi.Controllers
 {
@@ -8,28 +7,18 @@ namespace ProjectManagement.WebApi.Controllers
     [ApiController]
     public class ProjectsController : ControllerBase
     {
-        private readonly ILoggerService _loggerService;
-        private readonly IRepositoryManager _repositoryManager;
+        private readonly IServiceManager _serviceManager;
 
-        public ProjectsController(ILoggerService loggerService, IRepositoryManager repositoryManager)
+        public ProjectsController(IServiceManager serviceManager)
         {
-            _loggerService = loggerService;
-            _repositoryManager = repositoryManager;
+            _serviceManager = serviceManager;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            try
-            {
-                var list = _repositoryManager.Project.GetAllProjects(false);
-                return Ok(list);
-            }
-            catch (Exception ex)
-            {
-                _loggerService.LogError($"Projects.Get() has been crashed : {ex.Message}");
-                throw;
-            }
+            var list = _serviceManager.ProjectService.GetAllProjects(false);
+            return Ok(list);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using ProjectManagement.Entities.Models;
 
-namespace ProjectManagement.Contracts.Repository.Repositories
+namespace ProjectManagement.Contracts
 {
     public interface IEmployeeRepository
     {

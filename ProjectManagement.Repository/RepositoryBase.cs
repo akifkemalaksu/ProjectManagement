@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq.Expressions;
-using ProjectManagement.Contracts.Repository.Repositories;
 using ProjectManagement.Repository;
+using ProjectManagement.Contracts;
 
-namespace ProjectManagement.Repository.Repositories
+namespace ProjectManagement.Repository
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T>
         where T : class

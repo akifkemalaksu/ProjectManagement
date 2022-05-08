@@ -1,8 +1,9 @@
-﻿using ProjectManagement.Contracts.Repository.Repositories;
-using ProjectManagement.Entities.Models;
+﻿using ProjectManagement.Entities.Models;
 using System;
+using ProjectManagement.Contracts;
+using ProjectManagement.Repository;
 
-namespace ProjectManagement.Repository.Repositories
+namespace ProjectManagement.Repository
 {
     public class ProjectRepository : RepositoryBase<Project>, IProjectRepository
     {

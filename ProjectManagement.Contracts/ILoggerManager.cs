@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ProjectManagement.Contracts.Utilities.Logger
+namespace ProjectManagement.Contracts
 {
-    public interface ILoggerService
+    public interface ILoggerManager
     {
         void LogInfo(string message);
 

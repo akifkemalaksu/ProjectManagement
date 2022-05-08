@@ -1,10 +1,10 @@
 ﻿using NLog;
 using System;
-using ProjectManagement.Contracts.Utilities.Logger;
+using ProjectManagement.Contracts;
 
 namespace ProjectManagement.Logger.NLog
 {
-    public class LoggerService : ILoggerService
+    public class LoggerManager : ILoggerManager
     {
         private static readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 

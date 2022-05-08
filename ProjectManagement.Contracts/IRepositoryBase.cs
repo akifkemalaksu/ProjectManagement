@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace ProjectManagement.Contracts.Repository.Repositories
+namespace ProjectManagement.Contracts
 {
     public interface IRepositoryBase<T>
         where T : class

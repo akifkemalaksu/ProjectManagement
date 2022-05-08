@@ -1,7 +1,7 @@
 ﻿using ProjectManagement.Entities.Models;
 using System;
 
-namespace ProjectManagement.Contracts.Repository.Repositories
+namespace ProjectManagement.Contracts
 {
     public interface IProjectRepository
     {

@@ -1,7 +1,7 @@
-﻿using ProjectManagement.Contracts.Repository.Repositories;
-using System;
+﻿using System;
+using ProjectManagement.Contracts;
 
-namespace ProjectManagement.Contracts.Repository.UoW
+namespace ProjectManagement.Contracts
 {
     public interface IRepositoryManager
     {
