@@ -5,12 +5,12 @@ namespace ProjectManagement.Contracts
 {
     public interface IProjectRepository
     {
-        IEnumerable<Project> GetAllProjects(bool trackChanges);
+        public IEnumerable<Project> GetAllProjects(bool trackChanges);
 
-        Project GetProject(Guid projectId, bool trackChanges);
+        public Project GetOneProjectById(Guid projectId, bool trackChanges);
 
-        void CreateProject(Project project);
+        public void CreateProject(Project project);
 
-        void DeleteProject(Project project);
+        public void DeleteProject(Project project);
     }
 }

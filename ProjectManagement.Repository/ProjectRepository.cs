@@ -1,7 +1,6 @@
-﻿using ProjectManagement.Entities.Models;
+﻿using ProjectManagement.Contracts;
+using ProjectManagement.Entities.Models;
 using System;
-using ProjectManagement.Contracts;
-using ProjectManagement.Repository;
 
 namespace ProjectManagement.Repository
 {
@@ -17,6 +16,6 @@ namespace ProjectManagement.Repository
 
         public IEnumerable<Project> GetAllProjects(bool trackChanges) => FindAll(trackChanges).OrderBy(p => p.Name).ToList();
 
-        public Project GetProject(Guid projectId, bool trackChanges) => FindByCondition(p => p.Id.Equals(projectId), trackChanges).SingleOrDefault();
+        public Project GetOneProjectById(Guid projectId, bool trackChanges) => FindByCondition(p => p.Id.Equals(projectId), trackChanges).SingleOrDefault();
     }
 }

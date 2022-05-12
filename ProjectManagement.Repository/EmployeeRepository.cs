@@ -26,6 +26,6 @@ namespace ProjectManagement.Repository
             FindByCondition(e => e.ProjectId.Equals(projectId) && e.Id.Equals(employeeId), trackChanges).SingleOrDefault();
 
         public IEnumerable<Employee> GetEmployeesByProjectId(Guid projectId, bool trackChanges) =>
-            FindByCondition(e => e.Project.Equals(projectId), trackChanges).OrderBy(e => e.FirstName).ToList();
+            FindByCondition(e => e.ProjectId.Equals(projectId), trackChanges).OrderBy(e => e.FirstName).ToList();
     }
 }

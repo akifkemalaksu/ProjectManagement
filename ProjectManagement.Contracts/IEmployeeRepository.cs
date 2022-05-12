@@ -4,12 +4,12 @@ namespace ProjectManagement.Contracts
 {
     public interface IEmployeeRepository
     {
-        IEnumerable<Employee> GetEmployeesByProjectId(Guid projectId, bool trackChanges);
+        public IEnumerable<Employee> GetEmployeesByProjectId(Guid projectId, bool trackChanges);
 
-        Employee GetEmployeeByProjectId(Guid projectId, Guid employeeId, bool trackChanges);
+        public Employee GetEmployeeByProjectId(Guid projectId, Guid employeeId, bool trackChanges);
 
-        void CreateEmployeeForProject(Guid projectId, Employee employee);
+        public void CreateEmployeeForProject(Guid projectId, Employee employee);
 
-        void DeleteEmployee(Employee employee);
+        public void DeleteEmployee(Employee employee);
     }
 }

@@ -4,6 +4,7 @@ namespace ProjectManagement.Service.Contracts
 {
     public interface IServiceManager
     {
-        IProjectService ProjectService { get; }
+        public IProjectService ProjectService { get; }
+        public IEmployeeService EmployeeService { get; }
     }
 }
