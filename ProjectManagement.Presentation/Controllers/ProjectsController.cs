@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProjectManagement.Entities.Models;
 using ProjectManagement.Service.Contracts;
 using System;
 
@@ -19,29 +18,15 @@ namespace ProjectManagement.Presentation.Controllers
         [HttpGet]
         public IActionResult GetAllProjects()
         {
-            try
-            {
-                var projects = _serviceManager.ProjectService.GetAllProjects(false);
-                return Ok(projects);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "Internal server error!");
-            }
+            var projects = _serviceManager.ProjectService.GetAllProjects(false);
+            return Ok(projects);
         }
 
         [HttpGet("{projectId:guid}")]
         public IActionResult GetOneProjectById(Guid projectId)
         {
-            try
-            {
-                Project project = _serviceManager.ProjectService.GetOneProjectById(projectId, false);
-                return Ok(project);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "Internal server error!");
-            }
+            var project = _serviceManager.ProjectService.GetOneProjectById(projectId, false);
+            return Ok(project);
         }
     }
 }

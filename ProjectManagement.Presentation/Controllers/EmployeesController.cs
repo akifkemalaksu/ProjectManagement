@@ -18,29 +18,15 @@ namespace ProjectManagement.Presentation.Controllers
         [HttpGet]
         public IActionResult GetAllEmployeesByProjectId(Guid projectId)
         {
-            try
-            {
-                var employeeList = _serviceManager.EmployeeService.GetAllEmployeesByProjectId(projectId, false);
-                return Ok(employeeList);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "Internal service error!");
-            }
+            var employeeList = _serviceManager.EmployeeService.GetAllEmployeesByProjectId(projectId, false);
+            return Ok(employeeList);
         }
 
         [HttpGet("{employeeId:guid}")]
         public IActionResult GetOneEmployeeByProjectId(Guid projectId, Guid employeeId)
         {
-            try
-            {
-                var employee = _serviceManager.EmployeeService.GetOneEmployeeByProjectId(projectId, employeeId, false);
-                return Ok(employee);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "Internal service error!");
-            }
+            var employee = _serviceManager.EmployeeService.GetOneEmployeeByProjectId(projectId, employeeId, false);
+            return Ok(employee);
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using ProjectManagement.Contracts;
-using ProjectManagement.Entities.Models;
+﻿using AutoMapper;
+using ProjectManagement.Contracts;
+using ProjectManagement.Entities.Exceptions;
 using ProjectManagement.Service.Contracts;
+using ProjectManagement.Shared.DataTransferObjects;
 using System;
 
 namespace ProjectManagement.Service
@@ -9,79 +11,31 @@ namespace ProjectManagement.Service
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerManager _loggerManager;
+        private readonly IMapper _mapper;
 
-        public ProjectService(IRepositoryManager repositoryManager, ILoggerManager loggerManager)
+        public ProjectService(IRepositoryManager repositoryManager, ILoggerManager loggerManager, IMapper mapper)
         {
             _repositoryManager = repositoryManager;
             _loggerManager = loggerManager;
+            _mapper = mapper;
         }
 
-        public IEnumerable<Project> GetAllProjects(bool trackChanges)
+        public IEnumerable<ProjectDto> GetAllProjects(bool trackChanges)
         {
-            try
-            {
-                var projects = _repositoryManager.Project.GetAllProjects(trackChanges);
-                return projects;
-            }
-            catch (Exception ex)
-            {
-                _loggerManager.LogError($"PRojectService.GetAllProjects() has an error: {ex.Message}");
-                throw;
-            }
+            var projects = _repositoryManager.Project.GetAllProjects(trackChanges);
+            var projectDtos = _mapper.Map<IEnumerable<ProjectDto>>(projects);
+            return projectDtos;
         }
 
-        public Project GetOneProjectById(Guid id, bool trackChanges)
+        public ProjectDto GetOneProjectById(Guid id, bool trackChanges)
         {
-            try
-            {
-                var project = _repositoryManager.Project.GetOneProjectById(id, trackChanges);
-                return project;
-            }
-            catch (Exception ex)
-            {
-                _loggerManager.LogError($"ProjectRepository.GetProject() has an error: {ex.Message}");
-                throw;
-            }
-        }
-    }
+            var project = _repositoryManager.Project.GetOneProjectById(id, trackChanges);
 
-    public class EmployeeService : IEmployeeService
-    {
-        private readonly IRepositoryManager _repositoryManager;
-        private readonly ILoggerManager _loggerManager;
+            if (project is null)
+                throw new ProjectNotFoundException(id);
 
-        public EmployeeService(IRepositoryManager repositoryManager, ILoggerManager loggerManager)
-        {
-            _repositoryManager = repositoryManager;
-            _loggerManager = loggerManager;
-        }
-
-        public IEnumerable<Employee> GetAllEmployeesByProjectId(Guid projectId, bool trackChanges)
-        {
-            try
-            {
-                var employeeList = _repositoryManager.Employee.GetEmployeesByProjectId(projectId, trackChanges);
-                return employeeList;
-            }
-            catch (Exception ex)
-            {
-                _loggerManager.LogError($"IEmployeeRepository.GetEmployeesByProjectId() has an error: {ex.Message}");
-                throw;
-            }
-        }
-
-        public Employee GetOneEmployeeByProjectId(Guid projectId, Guid employeeId, bool trackChanges)
-        {
-            try
-            {
-                var project = _repositoryManager.Employee.GetEmployeeByProjectId(projectId, employeeId, trackChanges);
-                return project;
-            }
-            catch (Exception ex)
-            {
-                _loggerManager.LogError($"IEmployeeRepository.GetEmployeeByProjectId() has an error: {ex.Message}");
-                throw;
-            }
+            var projectDto = _mapper.Map<ProjectDto>(project);
+            return projectDto;
         }
     }
 }

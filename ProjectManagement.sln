@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.Service",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.Service.Contracts", "ProjectManagement.Service.Contracts\ProjectManagement.Service.Contracts.csproj", "{11DD0769-54EF-4CF0-B6CA-D80BC02636DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagement.Presentation", "ProjectManagement.Presentation\ProjectManagement.Presentation.csproj", "{9E716BE6-FF54-4F95-AECB-775D87621BCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.Presentation", "ProjectManagement.Presentation\ProjectManagement.Presentation.csproj", "{9E716BE6-FF54-4F95-AECB-775D87621BCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagement.Shared", "ProjectManagement.Shared\ProjectManagement.Shared.csproj", "{79B4892F-7DF2-4CA2-B4AC-D138892ABEE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{9E716BE6-FF54-4F95-AECB-775D87621BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E716BE6-FF54-4F95-AECB-775D87621BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E716BE6-FF54-4F95-AECB-775D87621BCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79B4892F-7DF2-4CA2-B4AC-D138892ABEE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79B4892F-7DF2-4CA2-B4AC-D138892ABEE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79B4892F-7DF2-4CA2-B4AC-D138892ABEE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79B4892F-7DF2-4CA2-B4AC-D138892ABEE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
